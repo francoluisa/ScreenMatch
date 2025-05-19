@@ -5,29 +5,47 @@ import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.modelos.Titulo;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class PrincipalComListas {
     public static void main(String[] args) {
 
-    Filme meuFilme = new Filme("O Poderoso Chefão", 1972);
-    meuFilme.avalia(9);
-    Filme filmeDoPaulo = new Filme("Dogville", 2003);
-    filmeDoPaulo.avalia(8);
-    Filme filme2 = new Filme("Avatar", 2009);
-    filme2.avalia(6);
-    Serie serie = new Serie("Lost", 2000);
+        Filme meuFilme = new Filme("O Poderoso Chefão", 1972);
+        meuFilme.avalia(9);
+        Filme filmeDoPaulo = new Filme("Dogville", 2003);
+        filmeDoPaulo.avalia(8);
+        Filme filme2 = new Filme("Avatar", 2009);
+        filme2.avalia(6);
+        Serie serie = new Serie("Lost", 2000);
 
-    ArrayList<Titulo> lista = new ArrayList<>();
+        ArrayList<Titulo> lista = new ArrayList<>();
         lista.add(filmeDoPaulo);
         lista.add(meuFilme);
         lista.add(filme2);
         lista.add(serie);
 
-        for (Titulo item: lista) {
+        for (Titulo item : lista) {
             System.out.println(item.getNome());
-            if (item instanceof Filme filme && filme.getClassificacao() > 2){
-            System.out.println("Classificação " + filme.getClassificacao());
+            if (item instanceof Filme filme && filme.getClassificacao() > 2) {
+                System.out.println("Classificação " + filme.getClassificacao());
             }
         }
+
+        ArrayList<String> buscaPorArtistas = new ArrayList<>();
+        buscaPorArtistas.add("Adam Sandler");
+        buscaPorArtistas.add("Paulo");
+        buscaPorArtistas.add("Jacquelina");
+
+        System.out.println(buscaPorArtistas);
+
+        Collections.sort(buscaPorArtistas);
+        System.out.println("Depois da ordenação");
+        System.out.println(buscaPorArtistas);
+
+        Collections.sort(lista);
+        System.out.println(lista);
+        lista.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
     }
+
 }
